@@ -1,0 +1,51 @@
+<%= form_for @artifact, :html => { :class => "form-horizontal artifact" } do |f| %>
+
+    <% if @artifact.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@artifact.errors.count, "error") %> prohibited this artifact from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @artifact.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+
+
+    
+  <div id="home">
+    <div class="home muli">
+      <div class="container content">
+        <h1 class="pull-right">Team Name</h1>
+        <br>
+        <h3>Create new artifact</h3>
+        <hr>
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="row"></div>
+            <%= f.label :name, :class => 'control-label' %>
+            <%= f.text_field :name, :class => 'form-control' %> <br />
+            <%= f.label :upload, value: 'File to upload' %>
+            <label class="btn btn-default btn-file">
+              <%= f.file_field :upload %>
+            </label>
+          </div>  
+        </div>  
+        <br>
+        <div align="center" class="row">
+          <%= f.hidden_field :project_id %>
+          <%= f.submit nil, :class => 'btn btn-primary' %>
+          <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    tenant_project_path(tenant_id: Tenant.current_tenant_id, 
+                                        id: @artifact.project_id), :class => 'btn btn-default' %> <br /><br />
+
+<% end %>
+        </div>
+      </div>
+    </div>
+  </div>  

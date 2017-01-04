@@ -1,0 +1,40 @@
+
+
+<% if current_user %>
+<h3 align="center" class="">Organization: <%= @tenant.name %></h3>
+<%= render 'projects/list' %>
+<% else %>
+<div id="cover-1">
+      <div class="cover-1">
+        <div class="container up">
+          <h2 align="center">Апликација за тимско управување со проекти</h2>
+          <div class="row">
+            <div class="plans clearfix muli">
+              <div align="center" class="col-lg-3 col-lg-offset-3 plan">
+                <h1>Free Plan</h1>
+                <p>Unlimited file uploads</p>
+                <p>Responsive design</p>
+                <p>Access anywhere</p>
+                <p>1 project</p>
+                <p>Price: Free</p>
+                <p class="sign-form" align="center">
+                  <%= link_to 'Sign Up', new_user_registration_path(plan: 'free'), class: 'btn btn-primary sign-up' %>
+                </p>
+              </div>
+              <div align="center" class="col-lg-3 plan">
+                <h1>Premium Plan</h1>
+                <p>Unlimited file uploads</p>
+                <p>Responsive design</p>
+                <p>Access anywhere</p>
+                <p>Unlimited projects</p>
+                <p>Price: 10 $</p>
+                <p class="sign-form" align="center">
+                  <%= link_to 'Sign Up', new_user_registration_path(plan: 'premium'), class: 'btn btn-primary sign-up' %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>

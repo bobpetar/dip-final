@@ -1,0 +1,86 @@
+<script language="JavaScript">
+  Stripe.setPublishableKey("<%= ENV['STRIPE_TEST_PUBLISHABLE_KEY'] %>");
+</script>
+
+<%= bootstrap_devise_error_messages! %>
+
+
+
+
+    <div id="cover-1">
+      <div class="cover-1">
+        <div class="container up muli">
+          <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { role: "form", class: 'cc_form' }) do |f| %>
+          <div class="col-md-8 col-md-offset-2">
+            <div class="padding-bottom">
+              <%= f.label :email %>
+              <%= f.email_field :email, autofocus: true, class: "form-control" %>
+            </div>
+            <div class="row">
+              <div class="padding-bottom col-sm-6">
+               <%= f.label :password %><br />
+               <%= f.password_field :password, class: "form-control" %>
+              </div>
+              <div class="padding-bottom col-sm-6">
+               <%= f.label :password_confirmation %>
+               <%= f.password_field :password_confirmation, class: "form-control" %>
+              </div>
+            </div>
+            <%= fields_for( :tenant ) do |w| %>
+            <div class="row">
+              <div class="padding-bottom col-md-6">
+                <%= w.label :name, 'Organization' %>
+                <span class='description'>(Unique name)</span>
+                <%= w.text_field :name, required: true, class: "form-control" %>
+              </div>
+              <div class="padding-bottom col-md-6">
+                <%= w.label :plan %>
+                <%= w.select :plan, options_for_select(Plan.options, params[:plan]), {}, required: true, 
+                class: "form-control" %>
+              </div>
+            </div>
+            <%= fields_for( :payment ) do |p| %>
+            <div class="row">
+              <div class="padding-bottom col-md-6">
+                <%= p.label :card_number, "Card Number", data: { stripe: 'label' } %>
+                <%= p.text_field :card_number, class: "form-control", required: true,
+                                 data: { stripe: 'number' }  %>
+              </div>
+              <div class="padding-bottom col-md-2">
+                <%= p.label :card_cvv, "Card CVV", data: { stripe: 'label' } %>
+                <%= p.text_field :card_cvv, class: "form-control", required: true,
+                               data: { stripe: 'cvv' }  %>
+              </div>
+              <div class="padding-bottom col-md-2">
+                <%= p.label :card_expires, "Month", data: { stripe: 'label' } %>
+                <%= p.select :card_expires_month,
+                             options_for_select(Payment.month_options),
+                             { include_blank: 'Month' },
+                             "data-stripe" => "exp-month",
+                             class: "form-control", required: true  %>
+              </div>
+              <div class="padding-bottom col-md-2">
+                <%= p.label :card_expires, "Year", data: { stripe: 'label' } %>
+                <%= p.select :card_expires_year,
+                             options_for_select(Payment.year_options.push),
+                               { include_blank: 'Year' },
+                             class: "form-control",
+                             data: { stripe: "exp-year"}, required: true  %>
+              </div>
+            </div>
+            <% end %>
+            <% end %>
+            <br>
+            <div class="sign-links" align="center">
+              <%= f.submit t('.sign_up', :default => "Sign up"), class: "btn btn-success" %>
+            </div><br>
+            <div class="sign-links">
+              <%= render "devise/shared/links" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>
+
+
