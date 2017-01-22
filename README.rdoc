@@ -6,12 +6,12 @@
 * Инсталирајте PostgreSQL <tt>sudo apt-get install postgresql</tt>
 * <tt>bundle install</tt> во терминал за инсталирање на сите потребни библиотеки што ги користи апликацијата (1-2 min)
 * креирајте нова датабза:
-     <tt>sudo -i -u postgres</tt>
-     <tt>psql</tt>
-     <tt>CREATE USER diplomska;</tt>
-     <tt>CREATE DATABASE diplomska WITH OWNER diplomska;</tt>
-     <tt>\q</tt> - за излез од конзола
-     <tt>exit</tt>
+ <tt>sudo -i -u postgres</tt>
+ <tt>psql</tt>
+ <tt>CREATE USER diplomska;</tt>
+ <tt>CREATE DATABASE diplomska WITH OWNER diplomska;</tt>
+ <tt>\q</tt> - за излез од конзола
+ <tt>exit</tt>
 * <tt>rake db:migrate</tt> - доколку на екран излезе error тогаш <tt>bundle install --deployment</tt> и пробајте повторно со rake командата
 * <tt>rails s</tt> за старт на серверот и посетете <tt>http://localhost:3000/</tt>
 креирајте нов акаунт, и после креирањето акаунтот треба да биде прифатен преку емаил,
