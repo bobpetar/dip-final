@@ -6,7 +6,7 @@
 * Инсталирајте PostgreSQL <tt>sudo apt-get install postgresql</tt>
 * <tt>bundle install</tt> во терминал за инсталирање на сите потребни библиотеки што ги користи апликацијата (1-2 min)
 * креирајте нова датабза:
-  <tt>sudo -i -u postgres
+<tt>sudo -i -u postgres </tt>
   psql
   CREATE USER diplomska;
   CREATE DATABASE diplomska WITH OWNER diplomska;
