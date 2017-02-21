@@ -1,14 +1,3 @@
-GIT
-  remote: git://github.com/rails/activerecord-session_store.git
-  revision: 177936e5207603a94a4deeabf6936363693ab96e
-  specs:
-    activerecord-session_store (1.0.0)
-      actionpack (>= 4.0, < 5.1)
-      activerecord (>= 4.0, < 5.1)
-      multi_json (~> 1.11, >= 1.11.2)
-      rack (>= 1.5.2, < 3)
-      railties (>= 4.0, < 5.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -214,7 +203,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord-session_store!
   aws-sdk
   bootstrap-datepicker-rails
   byebug
@@ -237,4 +225,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.13.7
+   1.14.3
